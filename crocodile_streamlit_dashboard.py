@@ -29,7 +29,19 @@ def load_json(path: Path):
         return json.loads(path.read_text())
     return {}
 
-df = load_data()
+# File existence and uploader logic
+if not DATA_PATH.exists():
+    st.warning(f"Data file not found at {DATA_PATH.resolve()}. Please upload the CSV file.")
+    uploaded = st.file_uploader("Upload crocodile_dataset.csv", type="csv")
+    if uploaded:
+        df = pd.read_csv(uploaded)
+        DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
+        df.to_csv(DATA_PATH, index=False)
+        st.success('File uploaded and saved successfully. Using uploaded data.')
+    else:
+        st.stop()
+else:
+    df = load_data()
 
 st.set_page_config(page_title="Crocodile Dashboard", layout="wide", page_icon="🐊")
 st.title("🐊 Crocodile Dataset Interactive Dashboard")
