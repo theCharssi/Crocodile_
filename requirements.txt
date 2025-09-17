@@ -1,4 +1,3 @@
-import plotly.express as px
 streamlit
 pandas
 plotly
