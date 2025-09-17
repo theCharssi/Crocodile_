@@ -44,7 +44,7 @@ else:
     df = load_data()
 
 st.set_page_config(page_title="Crocodile Dashboard", layout="wide", page_icon="🐊")
-st.title("🐊 Crocodile Dataset Interactive Dashboard")
+st.title("🐊 Global Crocodile Species")
 st.markdown("Explore species metrics, conservation status, geography, and temporal patterns. Data sourced from the crocodile dataset.")
 
 # Sidebar Filters
@@ -192,3 +192,4 @@ with tab_eda_outputs:
         st.download_button('Download Data Quality JSON', json.dumps(dq, indent=2).encode('utf-8'), 'data_quality.json', 'application/json')
 
 st.caption('Dashboard generated from crocodile dataset. Run EDA script first for enriched outputs.')
+
